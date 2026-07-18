@@ -1,0 +1,9 @@
+# Ignore generated lead lists
+*.csv
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore environment variables (if you add API keys later)
+.env
