@@ -163,15 +163,15 @@ def main():
         type_effect("  1. Google Maps (Best for finding actual Websites to scrape)")
         type_effect("  2. Facebook Pages (Best for social media, but scraping is limited)")
         
-        mode = input("[Bot] ➔ Enter 1 or 2 (or 'exit' to quit): ").strip()
+        mode = input("[Bot]  Enter 1 or 2 (or 'exit' to quit): ").strip()
         if mode.lower() == 'exit':
             break
             
-        niche = input("[Bot] ➔ Business niche? (e.g., Software House, Salon, Real Estate): ").strip()
-        city = input("[Bot] ➔ Which city? (e.g., Karachi, Lahore, Islamabad): ").strip()
+        niche = input("[Bot]  Business niche? (e.g., Software House, Salon, Real Estate): ").strip()
+        city = input("[Bot]  Which city? (e.g., Karachi, Lahore, Islamabad): ").strip()
         
         try:
-            num_results = int(input("[Bot] ➔ How many leads to fetch & scrape? (Max 15 recommended): ").strip())
+            num_results = int(input("[Bot]  How many leads to fetch & scrape? (Max 15 recommended): ").strip())
             num_results = min(num_results, 15)
         except ValueError:
             num_results = 10
