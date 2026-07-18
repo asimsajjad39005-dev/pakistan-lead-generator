@@ -73,7 +73,6 @@ def search_google_maps(niche, city, api_key, max_results=15):
         city_lower = city.lower().strip()
         
         for place in places:
-            # 🚨 STRICT CITY FILTER: Check if the address actually contains the requested city
             address = place.get("address", "").lower()
             if city_lower not in address:
                 continue 
@@ -153,9 +152,9 @@ def main():
     type_effect("[Bot]: I will find businesses AND automatically extract their Emails & Phones.")
     print("="*60)
 
-    api_key = input("\n[Bot] ➔ Please enter your SerpApi Key: ").strip()
+    api_key = input("\n[Bot]  Please enter your SerpApi Key: ").strip()
     if not api_key:
-        type_effect("[Bot]: ❌ API key is required. Exiting.")
+        type_effect("[Bot]:  API key is required. Exiting.")
         return
 
     while True:
@@ -177,21 +176,21 @@ def main():
         except ValueError:
             num_results = 10
 
-        type_effect(f"\n[Bot]: 🔍 Step 1: Searching for '{niche}' in {city}, Pakistan...")
+        type_effect(f"\n[Bot]:  Step 1: Searching for '{niche}' in {city}, Pakistan...")
         
         if mode == '1':
             raw_leads = search_google_maps(niche, city, api_key, num_results)
         elif mode == '2':
             raw_leads = search_facebook_pages(niche, city, api_key, num_results)
         else:
-            type_effect("[Bot]: ❌ Invalid choice. Please enter 1 or 2.")
+            type_effect("[Bot]:  Invalid choice. Please enter 1 or 2.")
             continue
 
         if not raw_leads:
-            type_effect("[Bot]: ❌ No results found. Try a different niche.")
+            type_effect("[Bot]:  No results found. Try a different niche.")
             continue
 
-        type_effect(f"\n[Bot]: 🕷️ Step 2: Automatically visiting {len(raw_leads)} websites to extract Emails & Phones...")
+        type_effect(f"\n[Bot]:  Step 2: Automatically visiting {len(raw_leads)} websites to extract Emails & Phones...")
         final_leads = []
         
         for i, lead in enumerate(raw_leads, 1):
@@ -214,15 +213,15 @@ def main():
         # Save the sanitized data
         save_to_csv(final_leads)
         
-        type_effect(f"\n[Bot]: ✅ Success! Processed {len(final_leads)} unique businesses in {city}.")
-        type_effect(f"[Bot]: 💾 Clean list saved to: {FILENAME}")
+        type_effect(f"\n[Bot]:  Success! Processed {len(final_leads)} unique businesses in {city}.")
+        type_effect(f"[Bot]:  Clean list saved to: {FILENAME}")
         
-        type_effect("\n[Bot]: 📋 Clean Preview of Extracted Data:")
+        type_effect("\n[Bot]:  Clean Preview of Extracted Data:")
         for i, lead in enumerate(final_leads[:3], 1):
-            print(f"  {i}. 🏢 {lead['Business Name']}")
-            print(f"     📧 {lead['Extracted Email']}")
-            print(f"     📞 {lead['Extracted Phone']}")
-            print(f"     🔗 {lead['Website']}")
+            print(f"  {i}.  {lead['Business Name']}")
+            print(f"      {lead['Extracted Email']}")
+            print(f"      {lead['Extracted Phone']}")
+            print(f"      {lead['Website']}")
             print("-" * 40)
             
         if len(final_leads) > 3:
@@ -232,7 +231,7 @@ def main():
         if cont not in ['yes', 'y']:
             break
 
-    type_effect("\n[Bot]: 🎉 All done! Open the CSV file in Excel. Khuda Hafiz!")
+    type_effect("\n[Bot]:  All done! Open the CSV file in Excel. Khuda Hafiz!")
 
 if __name__ == "__main__":
     main()
