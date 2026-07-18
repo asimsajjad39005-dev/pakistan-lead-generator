@@ -20,5 +20,5 @@ An automated Python chatbot designed to generate B2B and B2C business leads spec
 
 1. Clone this repository:
    ```bash
-   git clone <your-repo-url>
-   cd <repo-folder>
+   git clone https://github.com/asimsajjad39005-dev/pakistan-lead-generator.git
+   cd pakistan-lead-generator
